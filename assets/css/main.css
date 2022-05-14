@@ -67,6 +67,9 @@ input::-moz-focus-inner {
 
 .circular--square {
 	border-radius: 50%;
+	height: 100%;
+	width: 100%;
+	object-fit: contain
 }
 
 input, select, textarea {
