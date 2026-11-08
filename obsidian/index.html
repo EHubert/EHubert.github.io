@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open Obsidian note</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    body { font: 16px/1.5 system-ui, sans-serif; max-width: 36rem; margin: 12vh auto; padding: 0 1.25rem; }
+    a { color: #6546a3; }
+  </style>
+</head>
+<body>
+  <h1>Open Obsidian note</h1>
+  <p id="status">Checking link…</p>
+  <p><a id="open" hidden>Open note in Obsidian</a></p>
+  <script>
+    const status = document.getElementById('status');
+    const link = document.getElementById('open');
+    const uri = new URLSearchParams(location.search).get('uri');
+    if (!uri || !/^obsidian:\/\/open\?/i.test(uri)) {
+      status.textContent = 'Missing or invalid Obsidian link. Use ?uri= followed by an encoded obsidian://open?... URL.';
+    } else {
+      link.href = uri;
+      link.hidden = false;
+      status.textContent = 'Opening Obsidian… If nothing happens, click the link below and allow your browser to open Obsidian.';
+      location.href = uri;
+    }
+  </script>
+</body>
+</html>
